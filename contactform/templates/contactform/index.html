@@ -1,0 +1,28 @@
+{% load bootstrap4 %}
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+<div class="container">
+    <form action="{% url 'send' %}" method="post">
+        {% csrf_token %}
+      <div class="form-group">
+        <label for="emailFrom">From (your e-mail address)</label>
+        <input name="emailFrom" type="email" class="form-control" id="emailFrom" aria-describedby="emailHelp">
+        <small id="emailHelp" class="form-text text-muted">Your email will be shared with your receiver.</small>
+      </div>
+      <div class="form-group">
+        <label for="emailTo">To (receiver e-mail address)</label>
+        <input name="emailTo" type="email" class="form-control" id="emailTo">
+      </div>
+      <div class="form-group">
+        <label for="emailSubject">Subject</label>
+        <input name="emailSubject" type="text" class="form-control" id="emailSubject">
+      </div>
+      <div class="form-group">
+        <label for="emailMessage">Message</label>
+        <textarea class="form-control" name="emailMessage" type="textarea" id="emailMessage" placeholder="Message" maxlength="300" rows="7"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Send</button>
+    </form>
+</div>

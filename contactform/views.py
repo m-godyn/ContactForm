@@ -12,6 +12,7 @@ def send(request):
         receiver = request.POST.get("emailTo")
         subject = request.POST.get("emailSubject")
         message = request.POST.get("emailMessage")
+        API_KEY = request.POST.get("emailApiKey")
 
         message = Mail(
             from_email=sender,
@@ -19,11 +20,8 @@ def send(request):
             subject=subject,
             html_content=message)
 
-        with open('contactform/templates/contactform/sendgrid_key.txt') as f:
-            SENDGRID_KEY = f.read().strip()
-
         try:
-            sg = SendGridAPIClient(SENDGRID_KEY)
+            sg = SendGridAPIClient(API_KEY)
             response = sg.send(message)
             print(response.status_code)
             print(response.body)
@@ -33,4 +31,3 @@ def send(request):
 
         return redirect("/")
     return render(request, 'contactform/index.html')
-

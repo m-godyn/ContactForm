@@ -25,7 +25,7 @@ SECRET_KEY = '95u+$!*ogp0vxgwbt0yn42=e+_s+#y$(l4b0j@%(%ng8)unll9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['emailcontactform.azurewebsites.net']
 
 
 # Application definition
